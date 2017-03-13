@@ -83,7 +83,7 @@ Network::Network(int n0,float alpha, float beta, int maxdemand0,int maxcapacity0
 		}
 
 
-	//----initialisation alÃ©atoire de la matrice des capacites---//
+	//----initialisation aléatoire de la matrice des capacites---//
 		
 	capacity = new  int* [n] ;
 
@@ -194,10 +194,6 @@ Network::Network(int n0,float alpha, float beta, int maxdemand0,int maxcapacity0
 	cout<< "La capacité est de " << sumcapacity << endl;
 	
 	cout<< "Les demandes sont de " << sumdemand << endl;
-	
-	cout<< "La somme des coûts de transport est de: " << maxcost << endl;
-	
-	cout<< "La somme des coûts de routage est de: " << maxfixedcost << endl;
 	
 	if(sumcapacity >= sumdemand)
 		cout << "Capacité supérieure aux demandes."<< endl;
@@ -444,6 +440,7 @@ Network::~Network(){
 
 int main(int argc, char ** argv) {
 	int n 	  		= 0,
+		N			= 0,
 		maxdemand	= 1,
 		maxcapacity = 10,
 		maxcost		= 10,
@@ -455,27 +452,26 @@ int main(int argc, char ** argv) {
 	std::stringstream sstm;
 	std::stringstream sstm2;
 	
+	cout<< "Entrez le nombre d'instances souhaitées: "<< endl;
+	cin >> N;
 	cout<< "Entrez le nombre de sommets: " << endl;
 	cin >> n;
+	cout<< "Entrez le paramètre alpha (total commodités): " << endl;
+	cin >> alpha;
+	cout<< "Entrez le paramètre beta (total arcs): " << endl;
+	cin >> beta;
+	cout<< "Entrez la demande max pour un arc: " << endl;
+	cin >> maxdemand;
+	cout<< "Entrez la capacité max d'un arc: " << endl;
+	cin >> maxcapacity;
+	cout<< "Entrez le coût max de transport par arc: " << endl;
+	cin >> maxcost;
+	cout<< "Entrez le coût max de routage par un arc: " << endl;
+	cin >> maxfixedcost;
 	
-	for(float alpha = 0.1; alpha <= 1; alpha += 0.1){
-		for(float beta = 0.1; beta <= 0.5; beta += 0.1){
+	for(int i = 0; i < N; i++){
 	srand(time(NULL)) ;
 	
-	
-	
-	//cout<< "Entrez le paramètre alpha (total commodités): " << endl;
-	//cin >> alpha;
-	//cout<< "Entrez le paramètre beta (total arcs): " << endl;
-	//cin >> beta;
-	//cout<< "Entrez la demande max pour un arc: " << endl;
-	//cin >> maxdemand;
-	//cout<< "Entrez la capacité max d'un arc: " << endl;
-	//cin >> maxcapacity;
-	//cout<< "Entrez le coût max de transport par arc: " << endl;
-	//cin >> maxcost;
-	//cout<< "Entrez le coût max de routage par un arc: " << endl;
-	//cin >> maxfixedcost;
 	
 	IloNum start;
 	float diff = 0;
@@ -543,7 +539,7 @@ int main(int argc, char ** argv) {
 	Network::compteur++;
 	continue;
 }
-}
+
 
 	return 0;
 

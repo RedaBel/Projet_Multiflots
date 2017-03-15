@@ -400,7 +400,23 @@ for(int a=0;a<n;++a)
 					z++ ;
 					}
         }}
-      
+        
+        file << "Generals \n";
+        z = 0;
+        for(int i=0;i<n;++i)
+        {
+			for(int j=0;j<n;++j)
+			{
+				if(link[i][j]) {
+					
+					
+					chaine.append("y"+patch::to_string(z)+"\t");
+					file << chaine ;
+				    chaine = "" ;
+					z++ ;
+					}
+        }}
+		file << "\n" ;
         file <<"End" ;
                   
         file.close();
